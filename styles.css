@@ -254,27 +254,218 @@ h1 {
   background-color: #006699;
 }
 
-/* Add these new styles */
+/* Simplified Donation Section Styles */
 .donation-section {
+    margin-top: 30px;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.donation-title {
+    color: #1a73e8;
+    font-size: 24px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.donation-description {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.donation-method {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.wave-logo,
+.gtbank-logo {
+    width: 60px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+.donation-info {
+    flex-grow: 1;
+}
+
+.donation-info p {
+    margin-bottom: 10px;
+}
+
+.copy-btn {
+    background: #1a73e8;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #1557b0;
+}
+
+.copy-btn.copied {
+    background: #4caf50;
+}
+
+.donation-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.thank-you-note {
+    color: #666;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .donation-method {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .wave-logo,
+    .gtbank-logo {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .donation-info {
+        text-align: center;
+    }
+}
+
+/* Add these new styles */
+.score-popup {
+    display: none;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 9999;
 }
 
-.donate-link {
-    background-color: #ff6347;
-    color: white;
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, transform 0.3s;
+.score-popup-content {
+    position: relative;
+    background-color: #fff;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.donate-link:hover {
-    background-color: #ff4500;
-    transform: scale(1.05);
+.score-display {
+    font-size: 28px;
+    color: #1a73e8;
+    margin-bottom: 20px;
 }
+
+/* Add these styles for the donation image container and image */
+.donation-image-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.donation-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Responsive styles for different screen sizes */
+@media (max-width: 768px) {
+    .donation-image-container {
+        padding: 0 10px;
+        margin: 15px auto;
+    }
+    
+    .donation-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .donation-description {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .donation-image-container {
+        padding: 0 5px;
+        margin: 10px auto;
+    }
+    
+    .donation-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Updated "Return to Homepage" button styles */
+.return-home-btn {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    padding: 15px;
+    background-color: #ff5733; /* A bright, attention-grabbing color */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Added smooth transition for hover */
+    margin: 0 auto 20px auto;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Added shadow for emphasis */
+}
+
+.return-home-btn:hover {
+    background-color: #e04d23; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+.return-home-btn:before {
+    content: '🏠'; /* Home icon */
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.return-home-btn:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 87, 51, 0.8); /* Focus effect */
+}
+
+
+
+
+
+
+
+
+
