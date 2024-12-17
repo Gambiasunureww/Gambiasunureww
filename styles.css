@@ -1,49 +1,109 @@
-/* Add your existing styles above */
-.donation-section {
-    margin-top: 30px;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
 }
 
-.donation-title {
-    color: #1a73e8;
-    font-size: 24px;
-    margin-bottom: 20px;
-    line-height: 1.4;
+body {
+    background-color: #f0f2f5;
+    padding: 20px;
 }
 
-.donation-description {
-    color: #666;
-    font-size: 16px;
-    margin-bottom: 30px;
-    line-height: 1.6;
-}
-
-.donation-image-container {
-    width: 100%;
+.container {
     max-width: 800px;
-    margin: 20px auto;
-    padding: 0 15px;
-}
-
-.donation-image {
-    width: 100%;
-    height: auto;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.donation-button {
+h1 {
     text-align: center;
-    margin-top: 20px;
+    color: #1a73e8;
+    margin-bottom: 20px;
 }
 
-.donate-btn {
-    padding: 12px 24px;
+/* Progress Bar Styles */
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: none;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
     background-color: #4caf50;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+.topic-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #1a73e8;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.quiz-container {
+    display: none;
+}
+
+.question-container {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.question {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.options {
+    display: grid;
+    gap: 10px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.option:hover {
+    background-color: #f5f5f5;
+}
+
+.option input[type="radio"] {
+    margin-right: 10px;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #1a73e8;
     color: white;
     border: none;
     border-radius: 5px;
@@ -52,15 +112,169 @@
     transition: background-color 0.3s;
 }
 
-.donate-btn:hover {
+.submit-btn:hover {
+    background-color: #1557b0;
+}
+
+.result-indicator {
+    margin-left: 10px;
+    font-size: 20px;
+    display: none;
+}
+
+.correct {
+    color: #4caf50;
+}
+
+.incorrect {
+    color: #f44336;
+}
+
+.score-display {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+.try-again-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.try-again-btn:hover {
     background-color: #45a049;
 }
 
-.donation-footer {
-    margin-top: 20px;
-    text-align: center;
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    .question {
+        font-size: 16px;
+    }
+
+    .option {
+        padding: 8px;
+    }
 }
 
-.thank-you-note {
-    color: #666;
+.telegram-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+}
+
+.popup-content {
+  position: relative;
+  background-color: #fff;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.popup-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.telegram-logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+.popup-body {
+  text-align: center;
+}
+
+.urgent-msg {
+  color: #ff3b30;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 15px 0;
+}
+
+.popup-body ul {
+  text-align: left;
+  margin: 20px auto;
+  max-width: 300px;
+}
+
+.popup-body li {
+  margin: 10px 0;
+}
+
+.join-btn {
+  display: inline-block;
+  background-color: #0088cc;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.join-btn:hover {
+  background-color: #006699;
+}
+
+/* Add these new styles */
+.donation-section {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.donate-link {
+    background-color: #ff6347;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.donate-link:hover {
+    background-color: #ff4500;
+    transform: scale(1.05);
 }
