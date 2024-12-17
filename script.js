@@ -2249,3 +2249,21 @@ window.onload = function() {
 function closePopup() {
   document.getElementById('telegramPopup').style.display = 'none';
 }
+
+// Add this to your existing script.js file
+document.querySelectorAll('.copy-btn').forEach(button => {
+    button.addEventListener('click', async () => {
+        const number = button.dataset.number;
+        try {
+            await navigator.clipboard.writeText(number);
+            button.textContent = 'Copied!';
+            button.classList.add('copied');
+            setTimeout(() => {
+                button.textContent = 'Copy Number';
+                button.classList.remove('copied');
+            }, 2000);
+        } catch (err) {
+            console.error('Failed to copy:', err);
+        }
+    });
+});
