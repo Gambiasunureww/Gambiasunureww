@@ -3,63 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Quiz - 60s Per Question</title>
+    <title>Math Genius Academy</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="https://waecmathsuccess.github.io/Waecmathsuccess/" class="return-home-btn">Return to Homepage</a>
+    <div class="mobile-notice" id="mobileNotice">
+        📱 For the best experience, please rotate your device to landscape mode.
+        <button class="notice-close" onclick="this.parentElement.style.display='none'">×</button>
+    </div>
+    <nav class="navbar">
+        <div class="logo">Math Genius Academy</div>
+        <button class="hamburger" id="hamburgerMenu">&#9776;</button>
+        <div class="nav-links" id="navLinks">
+            <a href="https://videolectures101.github.io/mathvideolecture/" target="_blank">Video Lectures</a>
+            <div class="dropdown">
+                <label for="speedTest">Test Your Speed</label>
+                <select id="speedTest" class="dropdown-select">
+                    <option value="" disabled selected>Select Topic</option>
+                    <option value="algebra">Algebra</option>
+                    <option value="geometry">Geometry</option>
+                    <option value="arithmetic">Arithmetic</option>
+                </select>
+            </div>
+            <div class="dropdown">
+                <label for="resources">Downloadable Resources</label>
+                <select id="resources" class="dropdown-select">
+                    <option value="" disabled selected>Select Topic</option>
+                    <option value="algebra">Algebra</option>
+                    <option value="geometry">Geometry</option>
+                    <option value="arithmetic">Arithmetic</option>
+                </select>
+            </div>
+            <a href="https://mathquiz101.github.io/Mathquiz101/" target="_blank">Practice Questions</a>
+        </div>
     </nav>
 
-    <div class="quiz-container">
-        <h1 style="text-align: center;">Numbers and Numeration Quiz</h1>
-        <div id="start-screen">
-            <h2>Test your knowledge!</h2>
-            <p>You have 60 seconds for each question.</p>
-            <p>Total questions: 10</p>
-            <button id="start-btn">Start Quiz</button>
-        </div>
-        <div id="quiz-screen" class="hide">
-            <div class="timer">Time left: 60s</div>
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
-            <div class="question-number"></div>
-            <div class="question" id="question"></div>
-            <div class="options" id="options"></div>
-            <button id="next-btn" class="hide">Next Question</button>
-        </div>
-        <div id="result-screen" class="hide">
-            <div class="result"></div>
-            <div id="next-level-container" class="hide next-level-link">
-                <h3>🎉 Congratulations! You've Unlocked Level 2! 🎉</h3>
-                <p>Your special access link to Level 2:</p>
-                <a href="#" id="next-level-link" target="_blank"></a>
-                <br>
-                <button class="copy-btn" onclick="copyLink()">Copy Link</button>
-                <div class="save-reminder">
-                  ⚠️ Important: Save this link! Without it, you won't be able to access Level 2 materials.
-                </div>
-            </div>
-            <button id="restart-btn" onclick="location.reload()">Restart Quiz</button>
-        </div>
-        <!-- Fixed Elements -->
-    <div class="donate-banner">
-        <a href="https://mathquiz101.github.io/Mathquiz101/" target="_blank" rel="noopener noreferrer">
-            PLEASE DONATE
+    <div class="upgrade-banner">
+        <a href="https://videolectures101.github.io/videolectures/" class="upgrade-link">
+            <span class="pro-button">🌟 Upgrade to Pro! 🌟</span>
+        </a>
+        <a href="https://videolectures101.github.io/videolectures/" class="donate-link">
+            <span class="donate-button">💝 Donate Here! 💝</span>
         </a>
     </div>
 
-        <!-- Donate Section -->
-        <div class="donate-section">
-            <h2>Please Donate</h2>
-            <p>Your support helps us create more challenging content for advanced learning.</p>
+    <div class="container">
+        <h1>Welcome to Math Genius Academy</h1>
+        <p>Your comprehensive online mathematics learning platform. Explore various mathematical disciplines with expert-curated content.</p>
+        
+        <div class="feature-grid">
+            <div class="feature-box">
+                <h2>Personalized Learning</h2>
+                <p>Tailored mathematical learning paths for students of all levels.</p>
+            </div>
+            <div class="feature-box">
+                <h2>Expert Tutors</h2>
+                <p>Learn from experienced mathematicians and educators.</p>
+            </div>
+            <div class="feature-box">
+                <h2>Interactive Content</h2>
+                <p>Engaging video lectures, quizzes, and downloadable resources.</p>
+            </div>
+        </div>
+
+        <div class="donation-section">
+            <h2>🚨 Support Our Educational Mission By Donating! 🚨</h2>
+            <p class="urgent-msg">Help Us Create More Quality Content!</p>
+            <div class="donation-content">
+                <p>Your contribution helps us provide more free quality educational resources for students worldwide:</p>
+                <ul>
+                    <li>📚 Free Educational Resources</li>
+                    <li>📝 Quality Math Content</li>
+                    <li>👥 Better Learning Tools</li>
+                    <li>🎯 Enhanced Features</li>
+                </ul>
+                <a href="https://videolectures101.github.io/videolectures/" class="join-btn" target="_blank">
+                    DONATE HERE!
+                </a>
+            </div>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <footer class="footer">
+        <p>&copy; 2024 Math Genius Academy. All Rights Reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
-
-
- 
