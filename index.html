@@ -3,91 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mathematics Quiz</title>
+    <title>Math Quiz - 60s Per Question</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="https://waecmathsuccess.github.io/Waecmathsuccess/" class="return-home-btn">Return to Homepage</a>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="container">
-        <h1>Mathematics Quiz</h1>
-        
-        <!-- Quiz Controls -->
-        <section class="quiz-controls">
-            <select class="topic-select" id="topicSelect">
-                <option value="">Select a Topic</option>
-                <option value="Algebra">Algebra</option>
-                <option value="Geometry">Geometry</option>
-                <option value="Arithmetic">Arithmetic</option>
-            </select>
-
-            <div class="progress-container" id="progressContainer">
-                <div class="progress-text" id="progressText">Questions Answered: 0/5</div>
-                <div class="progress-bar" id="progressBar"></div>
+    <div class="quiz-container">
+        <h1 style="text-align: center;">Numbers and Numeration Quiz</h1>
+        <div id="start-screen">
+            <h2>Test your knowledge!</h2>
+            <p>You have 60 seconds for each question.</p>
+            <p>Total questions: 10</p>
+            <button id="start-btn">Start Quiz</button>
+        </div>
+        <div id="quiz-screen" class="hide">
+            <div class="timer">Time left: 60s</div>
+            <div class="progress-bar">
+                <div class="progress"></div>
             </div>
-        </section>
-
-        <!-- Quiz Content -->
-        <section id="quizContainer" class="quiz-container"></section>
-
-        <!-- Donation Section -->
-        <section id="donate" class="donate-section">
-            <h2 class="donation-title">Over 90% of children in sub-Saharan Africa can't read or solve basic math by age 10.</h2>
-            
-            <div class="donation-image-container">
-                <img src="https://www.educationcannotwait.org/sites/default/files/styles/de2e_standard/public/2022-03/DRC_banner%20%281%29.jpg"
-                     alt="Children in classroom in DRC" 
-                     class="donation-image"
-                     loading="lazy">
+            <div class="question-number"></div>
+            <div class="question" id="question"></div>
+            <div class="options" id="options"></div>
+            <button id="next-btn" class="hide">Next Question</button>
+        </div>
+        <div id="result-screen" class="hide">
+            <div class="result"></div>
+            <div id="next-level-container" class="hide next-level-link">
+                <h3>🎉 Congratulations! You've Unlocked Level 2! 🎉</h3>
+                <p>Your special access link to Level 2:</p>
+                <a href="#" id="next-level-link" target="_blank"></a>
+                <br>
+                <button class="copy-btn" onclick="copyLink()">Copy Link</button>
+                <div class="save-reminder">
+                  ⚠️ Important: Save this link! Without it, you won't be able to access Level 2 materials.
+                </div>
             </div>
-            
-            <p class="donation-description">
-                Worse still, over 75% of Africans have no access to free online tutoring or educational resources. 
-                Your support can change this. Donate today to help us provide free learning tools and unlock the 
-                potential of millions of bright young minds.
-            </p>
-        </section>
-    </main>
+            <button id="restart-btn" onclick="location.reload()">Restart Quiz</button>
+        </div>
 
-    <!-- Fixed Elements -->
-    <div class="donate-banner">
-        <a href="https://mathquiz101.github.io/Mathquiz101/" target="_blank" rel="noopener noreferrer">
-            PLEASE DONATE
-        </a>
-    </div>
-
-    <!-- Telegram Popup -->
-    <div class="telegram-popup" id="telegramPopup">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup()">&times;</span>
-            
-            <div class="popup-header">
-                <img src="https://logos-world.net/wp-content/uploads/2021/03/Telegram-Symbol.png" 
-                     alt="Telegram Logo" 
-                     class="telegram-logo">
-                <h2>🚨 Limited Time Access! 🚨</h2>
-            </div>
-
-            <div class="popup-body">
-                <p class="urgent-msg">⚠️ Our Telegram group is closing in less than 24 hours!</p>
-                <p>Join our exclusive Telegram channel to access:</p>
-                <ul>
-                    <li>📚 Free Video Lectures</li>
-                    <li>📝 Study Materials</li>
-                    <li>👥 Community Support</li>
-                    <li>🎯 Practice Problems</li>
-                </ul>
-                <a href="https://t.me/mathhub101" class="join-btn" target="_blank">
-                    Join Now Before It's Too Late!
-                </a>
+        <!-- Donate Section -->
+        <div class="donate-section">
+            <h2>Please Donate</h2>
+            <p>Your support helps us create more challenging content for advanced learning.</p>
+            <div class="donate-info">
+                <!-- Wave Donation Option -->
+                <div class="donation-method">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX1j8_1o20igEk7AJyDYrJ_cH3dBXBr6jwuw&usqp=CAU" alt="Wave Logo" class="wave-logo">
+                    <p>Wave Phone Number: <strong>3709558</strong></p>
+                </div>
+                <!-- GTBank Donation Option -->
+                <div class="donation-method">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/GTBank_logo.svg/2048px-GTBank_logo.svg.png" alt="GTBank Logo" class="gtbank-logo">
+                    <p>GTBank Account Number: <strong>2032202001590</strong></p>
+                </div>
             </div>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
+
+
+ 
