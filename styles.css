@@ -270,3 +270,47 @@ body {
     transform: scale(1.05);
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+
+/* New styles for locked resources */
+.resources-link {
+    position: relative;
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    cursor: not-allowed !important;
+    opacity: 0.9;
+}
+
+.lock-icon {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.upgrade-tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    display: none;
+    z-index: 1000;
+}
+
+.resources-link:hover .upgrade-tooltip {
+    display: block;
+}
+
+/* Update responsive styles */
+@media (max-width: 768px) {
+    .upgrade-tooltip {
+        bottom: auto;
+        left: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
