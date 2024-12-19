@@ -19,3 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks.classList.toggle('show');
     });
 });
+
+// Show popup when page loads
+window.onload = function() {
+  document.getElementById('telegramPopup').style.display = 'block';
+}
+
+// Close popup function
+function closePopup() {
+  document.getElementById('telegramPopup').style.display = 'none';
+}
