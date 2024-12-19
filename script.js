@@ -1,12 +1,3 @@
-
-    // Hamburger menu toggle
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const navLinks = document.getElementById('navLinks');
-    hamburgerMenu.addEventListener('click', function() {
-        navLinks.classList.toggle('show');
-    });
-});
-
 // Show popup when page loads
 window.onload = function() {
   document.getElementById('telegramPopup').style.display = 'block';
@@ -16,3 +7,12 @@ window.onload = function() {
 function closePopup() {
   document.getElementById('telegramPopup').style.display = 'none';
 }
+
+    // Hamburger menu toggle
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const navLinks = document.getElementById('navLinks');
+    hamburgerMenu.addEventListener('click', function() {
+        navLinks.classList.toggle('show');
+    });
+});
+
