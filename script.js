@@ -16,3 +16,9 @@ function closePopup() {
     });
 });
 
+
+document.querySelector('.download-button').addEventListener('click', () => {
+    console.log('File downloaded: MARKETING AND SALES CONTENT.docx');
+});
+
+
