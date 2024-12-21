@@ -27,10 +27,13 @@
       <button id="start-btn">Start Quiz</button>
     </div>
     <div id="quiz-container" class="hidden">
-      <div id="timer">Time Left: 60s</div>
+      <div id="timer">Time left: 60s</div>
+      <div class="progress-bar">
+        <div id="progress" style="width: 0%;"></div>
+      </div>
       <div id="question"></div>
-      <input type="text" id="answer" placeholder="Your Answer">
-      <button id="submit-btn">Submit</button>
+      <div id="options"></div>
+      <button id="next-btn" class="hidden">Next</button>
     </div>
     <div id="result" class="hidden"></div>
   </div>
