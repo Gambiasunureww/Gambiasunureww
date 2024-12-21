@@ -24,7 +24,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-select, input {
+select {
   width: 80%;
   padding: 10px;
   margin: 10px 0;
@@ -43,11 +43,41 @@ button:hover {
   background-color: #0056b3;
 }
 
-.hidden {
-  display: none;
-}
-
 #timer {
   font-size: 18px;
+  color: red;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
   margin-bottom: 20px;
+  overflow: hidden;
+}
+
+#progress {
+  height: 10px;
+  background-color: #007bff;
+}
+
+#options button {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#options button:hover {
+  background-color: #0056b3;
+}
+
+.hidden {
+  display: none;
 }
