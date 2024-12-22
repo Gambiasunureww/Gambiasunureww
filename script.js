@@ -224,6 +224,7 @@ const timerElement = document.getElementById("timer");
 const scoreElement = document.getElementById("score");
 const roundInfo = document.getElementById("round-info");
 const timeBar = document.getElementById("time-bar");
+const startQuizButton = document.getElementById("start-quiz");
 
 function startTimer() {
     timeLeft = 60;
@@ -269,15 +270,29 @@ function moveToNextQuestion(userAnswered) {
     clearInterval(interval);
     if (userAnswered) currentQuestionIndex++;
 
-    if ((currentQuestionIndex % questionsPerRound === 0) && userAnswered) {
+    // Check if current round is finished
+    if (currentQuestionIndex % questionsPerRound === 0 && userAnswered) {
         if (currentRound < totalRounds) {
             currentRound++;
-            alert(`Round ${currentRound} starts now!`);
+            displayRoundCTA();
         } else {
             endQuiz();
             return;
         }
     }
+    loadQuestion();
+}
+
+function displayRoundCTA() {
+    // Hide submit button and show the Start Round button
+    submitButton.disabled = true;
+    startQuizButton.classList.remove("hidden");
+}
+
+function startNextRound() {
+    // Reset input and start the next round
+    startQuizButton.classList.add("hidden");
+    submitButton.disabled = false;
     loadQuestion();
 }
 
@@ -293,6 +308,8 @@ submitButton.addEventListener("click", () => {
     checkAnswer();
     answerElement.value = "";
 });
+
+startQuizButton.addEventListener("click", startNextRound);
 
 window.onload = () => {
     loadQuestion();
