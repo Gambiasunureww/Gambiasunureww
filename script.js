@@ -1,139 +1,299 @@
-const questions = {
-  algebra: [
-    { question: "Solve: 2x + 3 = 7", options: ["x = 2", "x = 3", "x = 1", "x = 0"], answer: "x = 2" },
-    { question: "Factorize: x² + 5x + 6", options: ["(x+2)(x+3)", "(x-2)(x+3)", "(x+1)(x+6)", "(x-3)(x-2)"], answer: "(x+2)(x+3)" },
-    { question: "Simplify: 3(x - 2) + 4", options: ["3x - 2", "3x - 6", "3x - 2", "3x + 4"], answer: "3x - 2" }
-  ],
-  geometry: [
-    { question: "What is the area of a circle with radius 3?", options: ["28.26", "18.84", "20.12", "31.42"], answer: "28.26" },
-    { question: "Find the perimeter of a square with side 4.", options: ["12", "16", "20", "10"], answer: "16" },
-    { question: "What is the sum of the angles in a triangle?", options: ["180°", "90°", "270°", "360°"], answer: "180°" }
-  ],
-  arithmetic: [
-    { question: "What is 25 + 17?", options: ["42", "43", "40", "41"], answer: "42" },
-    { question: "Solve: 45 - 19", options: ["26", "24", "28", "25"], answer: "26" },
-    { question: "What is 12 × 8?", options: ["96", "86", "92", "88"], answer: "96" }
-  ],
-  trigonometry: [
-    { question: "Find sin(30°).", options: ["0.5", "1", "0.707", "0"], answer: "0.5" },
-    { question: "What is tan(45°)?", options: ["1", "0", "0.707", "∞"], answer: "1" },
-    { question: "Find cos(60°).", options: ["0.5", "0.866", "0", "1"], answer: "0.5" }
-  ],
-  calculus: [
-    { question: "Differentiate: x²", options: ["2x", "x²", "x", "2x²"], answer: "2x" },
-    { question: "Integrate: ∫x dx", options: ["x²/2 + C", "x² + C", "x + C", "1/x + C"], answer: "x²/2 + C" },
-    { question: "What is the derivative of sin(x)?", options: ["cos(x)", "-sin(x)", "-cos(x)", "sin(x)"], answer: "cos(x)" }
-  ],
-  statistics: [
-    { question: "What is the mean of 2, 4, 6?", options: ["4", "5", "3", "6"], answer: "4" },
-    { question: "Define median.", options: ["Middle value", "Most frequent value", "Average", "Range"], answer: "Middle value" },
-    { question: "Find the mode of 1, 1, 2, 3.", options: ["1", "2", "3", "None"], answer: "1" }
-  ],
-  probability: [
-    { question: "What is the probability of rolling a 6 on a die?", options: ["1/6", "1/3", "1/2", "1/4"], answer: "1/6" },
-    { question: "Define a sample space.", options: ["Set of all possible outcomes", "Event space", "Probability set", "Experiment"], answer: "Set of all possible outcomes" },
-    { question: "What is the probability of flipping heads on a coin?", options: ["1/2", "1/4", "1", "1/3"], answer: "1/2" }
-  ],
-  "linear-algebra": [
-    { question: "Find the determinant of a 2x2 matrix [[2, 3], [1, 4]].", options: ["5", "7", "8", "6"], answer: "5" },
-    { question: "What is a scalar multiplication?", options: ["Multiplying a matrix by a constant", "Adding two matrices", "Matrix transpose", "Matrix determinant"], answer: "Multiplying a matrix by a constant" },
-    { question: "Solve: Ax = b for x.", options: ["x = A⁻¹b", "x = Ab", "x = bA", "x = A+b"], answer: "x = A⁻¹b" }
-  ],
-  "discrete-math": [
-    { question: "What is a graph in graph theory?", options: ["Set of nodes and edges", "A bar chart", "A pie chart", "A function graph"], answer: "Set of nodes and edges" },
-    { question: "Define a set.", options: ["Collection of distinct elements", "A graph", "A list", "An equation"], answer: "Collection of distinct elements" },
-    { question: "What is a prime number?", options: ["A number divisible by 1 and itself", "A composite number", "An even number", "A negative number"], answer: "A number divisible by 1 and itself" }
-  ],
-  "number-theory": [
-    { question: "Find the GCD of 8 and 12.", options: ["4", "6", "8", "2"], answer: "4" },
-    { question: "Is 29 a prime number?", options: ["Yes", "No"], answer: "Yes" },
-    { question: "What is the LCM of 4 and 5?", options: ["20", "10", "15", "25"], answer: "20" }
-  ],
-  "financial-math": [
-    { question: "Calculate simple interest for P=1000, r=5%, t=2 years.", options: ["100", "50", "200", "150"], answer: "100" },
-    { question: "What is compound interest?", options: ["Interest on principal and accumulated interest", "Simple interest", "Fixed rate interest", "Negative interest"], answer: "Interest on principal and accumulated interest" },
-    { question: "Define annuity.", options: ["Fixed payments over time", "Single lump payment", "Interest rate", "Loan repayment"], answer: "Fixed payments over time" }
-  ]
-};
+// Array of 200 questions
+const questions = [
+    { question: "Solve for x: 2x + 3 = 7", answer: "2" },
+    { question: "Simplify: 3x + 5x", answer: "8x" },
+    { question: "Solve for x: x/2 = 5", answer: "10" },
+    { question: "Expand: (x + 2)(x - 2)", answer: "x^2-4" },
+    { question: "Simplify: 4x - 3x", answer: "x" },
+    { question: "Solve for x: 5x + 2 = 17", answer: "3" },
+    { question: "What is x if 7x = 49?", answer: "7" },
+    { question: "Factorize: x^2 - 16", answer: "(x+4)(x-4)" },
+    { question: "Simplify: 2(3x + 4)", answer: "6x+8" },
+    { question: "Solve for x: 2x + 4 = 12", answer: "4" },
+    { question: "Solve for x: 5x + 2 = 22", answer: "4" },
+{ question: "Simplify: 3x + 5x - 7", answer: "8x - 7" },
+{ question: "Factorize: x^2 + 5x - 14", answer: "(x-2)(x+7)" },
+{ question: "Expand: (x + 4)(x - 3)", answer: "x^2 + x - 12" },
+{ question: "Solve for x: 2x + 9 = 23", answer: "7" },
+{ question: "Simplify: 6x - 4x + 5", answer: "2x + 5" },
+{ question: "Factorize: x^2 + 9x + 20", answer: "(x+4)(x+5)" },
+{ question: "Expand: (x - 1)(x + 5)", answer: "x^2 + 4x - 5" },
+{ question: "Solve for x: 3x - 4 = 11", answer: "5" },
+{ question: "Simplify: 9x + 2 - 4x", answer: "5x + 2" },
+{ question: "Factorize: x^2 - 8x + 16", answer: "(x-4)^2" },
+{ question: "Solve for x: 7x + 3 = 38", answer: "5" },
+{ question: "Simplify: 5x - 3(2x - 4)", answer: "x + 12" },
+{ question: "Factorize: x^2 - 6x + 9", answer: "(x-3)^2" },
+{ question: "Expand: (2x + 3)(x - 7)", answer: "2x^2 - 11x - 21" },
+{ question: "Solve for x: 4x + 6 = 26", answer: "5" },
+{ question: "Simplify: 7x + 2x - 6", answer: "9x - 6" },
+{ question: "Factorize: x^2 - 3x - 28", answer: "(x-7)(x+4)" },
+{ question: "Solve for x: 9x - 5 = 40", answer: "5" },
+{ question: "Simplify: 6x + 4 - 2(3x - 2)", answer: "0x + 10" },
+{ question: "Solve for x: 3x + 4 = 19", answer: "5" },
+{ question: "Simplify: 6x - 2x + 7", answer: "4x + 7" },
+{ question: "Factorize: x^2 + 8x + 16", answer: "(x+4)^2" },
+{ question: "Expand: (x + 1)(x - 4)", answer: "x^2 - 3x - 4" },
+{ question: "Solve for x: 9x - 5 = 31", answer: "4" },
+{ question: "Simplify: 7x - 2(3x + 4)", answer: "x - 8" },
+{ question: "Factorize: x^2 - 4x - 45", answer: "(x-9)(x+5)" },
+{ question: "Expand: (2x - 5)(x + 3)", answer: "2x^2 + x - 15" },
+{ question: "Solve for x: 5x + 10 = 40", answer: "6" },
+{ question: "Simplify: 3x + 2(4x - 1)", answer: "11x - 2" },
+{ question: "Factorize: x^2 + 7x - 30", answer: "(x+10)(x-3)" },
+{ question: "Solve for x: 6x + 5 = 29", answer: "4" },
+{ question: "Simplify: 4x - 2x + 3(3x - 4)", answer: "10x - 12" },
+{ question: "Factorize: x^2 + 3x - 18", answer: "(x+6)(x-3)" },
+{ question: "Expand: (x + 2)(x - 5)", answer: "x^2 - 3x - 10" },
+{ question: "Solve for x: 4x - 8 = 16", answer: "6" },
+{ question: "Simplify: 8x + 4 - 3(2x - 5)", answer: "2x + 19" },
+{ question: "Factorize: x^2 - 5x + 6", answer: "(x-2)(x-3)" },
+{ question: "Solve for x: 2x - 7 = 13", answer: "10" },
+{ question: "Simplify: 5x - 4 + 3x", answer: "8x - 4" },
+{ question: "Solve for x: 4x + 5 = 21", answer: "4" },
+{ question: "Simplify: 2x + 3x - 5", answer: "5x - 5" },
+{ question: "Factorize: x^2 - 10x + 25", answer: "(x-5)^2" },
+{ question: "Expand: (x + 3)(x - 4)", answer: "x^2 - x - 12" },
+{ question: "Solve for x: 6x - 8 = 16", answer: "4" },
+{ question: "Simplify: 3x + 4 - 5x", answer: "-2x + 4" },
+{ question: "Factorize: x^2 - 5x - 24", answer: "(x-8)(x+3)" },
+{ question: "Expand: (2x - 3)(x + 5)", answer: "2x^2 + 7x - 15" },
+{ question: "Solve for x: 8x - 3 = 13", answer: "2" },
+{ question: "Simplify: 4x - 6 + 2x", answer: "6x - 6" },
+{ question: "Factorize: x^2 + 6x + 5", answer: "(x+5)(x+1)" },
+{ question: "Solve for x: 5x - 3 = 17", answer: "4" },
+{ question: "Simplify: 5(2x - 1) - 4x", answer: "6x - 5" },
+{ question: "Factorize: x^2 + 3x - 18", answer: "(x+6)(x-3)" },
+{ question: "Expand: (x - 1)(x + 7)", answer: "x^2 + 6x - 7" },
+{ question: "Solve for x: 2x + 7 = 13", answer: "3" },
+{ question: "Simplify: 6x - 2(3x + 4)", answer: "0x - 8" },
+{ question: "Factorize: x^2 - 16", answer: "(x+4)(x-4)" },
+{ question: "Solve for x: 7x + 3 = 31", answer: "4" },
+{ question: "Simplify: 5x + 3(2x - 1)", answer: "11x - 3" },
+{ question: "Solve for x: 3x + 7 = 22", answer: "5" },
+{ question: "Simplify: 4x - 5 + 3x", answer: "7x - 5" },
+{ question: "Factorize: x^2 - 3x - 28", answer: "(x-7)(x+4)" },
+{ question: "Expand: (x - 2)(x + 6)", answer: "x^2 + 4x - 12" },
+{ question: "Solve for x: 5x - 9 = 21", answer: "6" },
+{ question: "Simplify: 7x + 5 - 3x", answer: "4x + 5" },
+{ question: "Factorize: x^2 + 7x + 12", answer: "(x+3)(x+4)" },
+{ question: "Expand: (3x - 5)(x + 2)", answer: "3x^2 + x - 10" },
+{ question: "Solve for x: 3x - 4 = 14", answer: "6" },
+{ question: "Simplify: 8x + 4 - 3(2x + 1)", answer: "2x + 1" },
+{ question: "Factorize: x^2 - 6x - 9", answer: "(x-3)(x+3)" },
+{ question: "Solve for x: 6x + 5 = 29", answer: "4" },
+{ question: "Simplify: 5x + 2(3x - 4)", answer: "11x - 8" },
+{ question: "Factorize: x^2 + 2x - 15", answer: "(x+5)(x-3)" },
+{ question: "Expand: (x + 1)(x - 8)", answer: "x^2 - 7x - 8" },
+{ question: "Solve for x: x/4 + 6 = 10", answer: "16" },
+{ question: "Simplify: 6(3x - 2) - 4x", answer: "14x - 12" },
+{ question: "Factorize: x^2 - 4x - 45", answer: "(x-9)(x+5)" },
+{ question: "Solve for x: 2x - 6 = 12", answer: "9" },
+{ question: "Simplify: 7x - 3(2x + 1)", answer: "x - 3" },
+{ question: "Solve for x: 5x - 4 = 21", answer: "5" },
+{ question: "Simplify: 2(3x + 4) - x", answer: "5x + 8" },
+{ question: "Factorize: x^2 - 5x - 14", answer: "(x-7)(x+2)" },
+{ question: "Expand: (x + 3)(x + 7)", answer: "x^2 + 10x + 21" },
+{ question: "Solve for x: 4x/5 = 8", answer: "10" },
+{ question: "Simplify: 9x - 2(4x + 1)", answer: "x - 2" },
+{ question: "Factorize: x^2 + 6x + 9", answer: "(x+3)^2" },
+{ question: "Expand: (2x - 1)(x + 4)", answer: "2x^2 + 7x - 4" },
+{ question: "Solve for x: 2x - 3 = 9", answer: "6" },
+{ question: "Simplify: 5(2x - 3) + 3x", answer: "13x - 15" },
+{ question: "Factorize: x^2 - 12x + 35", answer: "(x-7)(x-5)" },
+{ question: "Solve for x: 8x + 6 = 22", answer: "2" },
+{ question: "Simplify: 4(3x + 1) - 2(2x - 3)", answer: "8x + 10" },
+{ question: "Factorize: 3x^2 + 11x + 6", answer: "(3x+2)(x+3)" },
+{ question: "Expand: (x - 6)(x - 2)", answer: "x^2 - 8x + 12" },
+{ question: "Solve for x: x/2 - 3 = 7", answer: "20" },
+{ question: "Simplify: 6x - 4(2x - 5)", answer: "-2x + 20" },
+{ question: "Factorize: x^2 + x - 20", answer: "(x+5)(x-4)" },
+{ question: "Solve for x: 7x - 8 = 27", answer: "5" },
+{ question: "Simplify: 10(3x - 1) - 5x", answer: "25x - 10" },
+{ question: "Solve for x: 2x - 9 = 11", answer: "10" },
+{ question: "Simplify: 5(3x + 2) - 4x", answer: "11x + 10" },
+{ question: "Factorize: x^2 - 7x + 12", answer: "(x-3)(x-4)" },
+{ question: "Expand: (2x + 3)(x - 5)", answer: "2x^2 - 7x - 15" },
+{ question: "Solve for x: 4x + 15 = 35", answer: "5" },
+{ question: "Simplify: 8x - 3(2x - 5)", answer: "2x + 15" },
+{ question: "Factorize: x^2 + 10x + 25", answer: "(x+5)^2" },
+{ question: "Expand: (x + 1)(x - 7)", answer: "x^2 - 6x - 7" },
+{ question: "Solve for x: 7x/4 = 14", answer: "8" },
+{ question: "Simplify: 6(2x + 3) - x", answer: "11x + 18" },
+{ question: "Factorize: x^2 - 11x + 30", answer: "(x-5)(x-6)" },
+{ question: "Solve for x: 3x - 5 = 16", answer: "7" },
+{ question: "Simplify: 4(3x - 2) - 2x", answer: "10x - 8" },
+{ question: "Factorize: 2x^2 + 7x + 3", answer: "(2x+1)(x+3)" },
+{ question: "Expand: (x - 4)(x + 5)", answer: "x^2 + x - 20" },
+{ question: "Solve for x: x/3 + 5 = 8", answer: "9" },
+{ question: "Simplify: 3(4x + 2) - 5x", answer: "7x + 6" },
+{ question: "Factorize: x^2 - 9x + 14", answer: "(x-7)(x-2)" },
+{ question: "Solve for x: 6x + 4 = 28", answer: "4" },
+{ question: "Simplify: 7(2x - 3) + 4x", answer: "18x - 21" },
+{ question: "Solve for x: 4x - 3 = 13", answer: "4" },
+{ question: "Simplify: 3(2x + 5) - 4x", answer: "2x + 15" },
+{ question: "Factorize: x^2 + 5x - 24", answer: "(x+8)(x-3)" },
+{ question: "Expand: (x + 4)(x - 6)", answer: "x^2 - 2x - 24" },
+{ question: "Solve for x: 6x + 9 = 33", answer: "4" },
+{ question: "Simplify: 7x - 2(2x + 3)", answer: "3x - 6" },
+{ question: "Factorize: x^2 - 6x + 9", answer: "(x-3)^2" },
+{ question: "Expand: (3x + 2)(x - 4)", answer: "3x^2 - 10x - 8" },
+{ question: "Solve for x: 5x/2 = 15", answer: "6" },
+{ question: "Simplify: 4(3x - 1) + 2x", answer: "14x - 4" },
+{ question: "Factorize: x^2 - 8x + 12", answer: "(x-6)(x-2)" },
+{ question: "Solve for x: 8x + 7 = 31", answer: "3" },
+{ question: "Simplify: 10x - 3(2x + 4)", answer: "4x - 12" },
+{ question: "Factorize: x^2 + 4x - 5", answer: "(x+5)(x-1)" },
+{ question: "Expand: (x + 6)(x - 2)", answer: "x^2 + 4x - 12" },
+{ question: "Solve for x: 3x - 7 = 11", answer: "6" },
+{ question: "Simplify: 2x + 5(3x - 4)", answer: "17x - 20" },
+{ question: "Factorize: x^2 - 2x - 35", answer: "(x-7)(x+5)" },
+{ question: "Solve for x: 9x - 15 = 21", answer: "4" },
+{ question: "Simplify: 6(2x + 1) - 3(4x - 2)", answer: "6x + 12" },
+{ question: "Solve for x: 2x + 7 = 19", answer: "6" },
+{ question: "Simplify: 8x - 3x + 4", answer: "5x + 4" },
+{ question: "Factorize: x^2 + 6x + 8", answer: "(x+4)(x+2)" },
+{ question: "Expand: (x - 2)(x - 5)", answer: "x^2 - 7x + 10" },
+{ question: "Solve for x: 3x/5 = 12", answer: "20" },
+{ question: "Simplify: 4(3x - 2) + x", answer: "13x - 8" },
+{ question: "Factorize: x^2 - 10x + 25", answer: "(x-5)^2" },
+{ question: "Expand: (x + 2)^3", answer: "x^3 + 6x^2 + 12x + 8" },
+{ question: "Solve for x: 9x - 4 = 23", answer: "3" },
+{ question: "Simplify: 2x + 3(4x - 1)", answer: "14x - 3" },
+{ question: "Factorize: x^2 - 4x - 12", answer: "(x-6)(x+2)" },
+{ question: "Solve for x: 5x + 10 = 35", answer: "5" },
+{ question: "Simplify: 7x - 2(3x + 5)", answer: "x - 10" },
+{ question: "Factorize: 2x^2 + 8x", answer: "2x(x+4)" },
+{ question: "Expand: (x - 3)^2", answer: "x^2 - 6x + 9" },
+{ question: "Solve for x: x/2 - 4 = 2", answer: "12" },
+{ question: "Simplify: 5(2x + 1) - 3(x - 4)", answer: "7x + 17" },
+{ question: "Factorize: x^2 + 9x + 20", answer: "(x+5)(x+4)" },
+{ question: "Solve for x: 7x/3 = 14", answer: "6" },
+{ question: "Simplify: 6x - 4(2x - 3)", answer: "-2x + 12" },
+{ question: "Simplify: 3x + 4 - 2x", answer: "x + 4" },
+{ question: "Solve for x: 2(x + 5) = 20", answer: "5" },
+{ question: "Factorize: x^2 - 25", answer: "(x+5)(x-5)" },
+{ question: "Simplify: 5(2x + 3) - 4x", answer: "6x + 15" },
+{ question: "Solve for x: 3x/2 = 9", answer: "6" },
+{ question: "Expand: (x + 1)(x + 2)", answer: "x^2 + 3x + 2" },
+{ question: "Solve for x: 4x - 7 = 5", answer: "3" },
+{ question: "Simplify: 9x - 3(2x + 1)", answer: "3x - 3" },
+{ question: "Factorize: x^2 + 7x + 10", answer: "(x+5)(x+2)" },
+{ question: "Solve for x: 5x/4 = 10", answer: "8" },
+{ question: "Simplify: 3(2x - 1) + x", answer: "7x - 3" },
+{ question: "Solve for x: x/4 + 3 = 8", answer: "20" },
+{ question: "Factorize: x^2 - 2x - 8", answer: "(x-4)(x+2)" },
+{ question: "Expand: (x - 3)(x + 4)", answer: "x^2 + x - 12" },
+{ question: "Simplify: 4x + 2(3x - 5)", answer: "10x - 10" },
+{ question: "Solve for x: 6x + 2 = 14", answer: "2" },
+{ question: "Factorize: x^2 + 4x + 3", answer: "(x+3)(x+1)" },
+{ question: "Expand: (2x + 3)(x - 1)", answer: "2x^2 + x - 3" },
+{ question: "Simplify: 7(2x + 1) - 3x", answer: "11x + 7" },
+{ question: "Solve for x: 2x - 5 = 15", answer: "10" },
+{ question: "Solve for x: 3x - 7 = 2", answer: "3" },
+{ question: "Simplify: 5x + 2x - 4x", answer: "3x" },
+{ question: "Factorize: x^2 + 5x + 6", answer: "(x+2)(x+3)" },
+{ question: "Solve for x: x/3 = 9", answer: "27" },
+{ question: "Expand: (x + 3)^2", answer: "x^2 + 6x + 9" },
+{ question: "Simplify: 6x - 2(3x - 4)", answer: "8" },
+{ question: "Solve for x: 4x + 8 = 20", answer: "3" },
+{ question: "Factorize: x^2 - 9x + 20", answer: "(x-4)(x-5)" },
+{ question: "Simplify: 2(4x + 1) - 3x", answer: "5x + 2" },
+{ question: "Solve for x: 7x - 5 = 16", answer: "3" },
+];
 
-let currentTopic = "";
+// Repeat questions to ensure 200 are present
+while (questions.length < 200) {
+    questions.push(...questions.slice(0, 10)); // Duplicate the first 10
+}
+questions.length = 200; // Trim to exactly 200 questions
+
 let currentQuestionIndex = 0;
 let score = 0;
 let timeLeft = 60;
-let timerInterval;
+let interval;
+let currentRound = 1;
+const questionsPerRound = 5;
+const totalRounds = questions.length / questionsPerRound;
 
-document.getElementById("start-btn").addEventListener("click", startQuiz);
-document.getElementById("next-btn").addEventListener("click", loadNextQuestion);
+// Elements
+const questionElement = document.getElementById("question");
+const answerElement = document.getElementById("answer");
+const submitButton = document.getElementById("submit-answer");
+const timerElement = document.getElementById("timer");
+const scoreElement = document.getElementById("score");
+const roundInfo = document.getElementById("round-info");
+const timeBar = document.getElementById("time-bar");
 
-function startQuiz() {
-  currentTopic = document.getElementById("topic").value;
-  currentQuestionIndex = 0;
-  score = 0;
+function startTimer() {
+    timeLeft = 60;
+    updateTimer();
+    interval = setInterval(() => {
+        timeLeft--;
+        updateTimer();
+        if (timeLeft <= 0) {
+            clearInterval(interval);
+            moveToNextQuestion(false);
+        }
+    }, 1000);
+}
 
-  document.querySelector(".quiz-settings").classList.add("hidden");
-  document.getElementById("quiz-container").classList.remove("hidden");
-
-  loadQuestion();
-  startTimer();
+function updateTimer() {
+    timerElement.textContent = `Time Left: ${timeLeft}s`;
+    const percentage = (timeLeft / 60) * 100;
+    timeBar.style.width = `${percentage}%`;
 }
 
 function loadQuestion() {
-  const questionData = questions[currentTopic][currentQuestionIndex];
-  document.getElementById("question").textContent = `Question ${currentQuestionIndex + 1}: ${questionData.question}`;
-
-  const optionsContainer = document.getElementById("options");
-  optionsContainer.innerHTML = "";
-  questionData.options.forEach((option) => {
-    const button = document.createElement("button");
-    button.textContent = option;
-    button.addEventListener("click", () => checkAnswer(option));
-    optionsContainer.appendChild(button);
-  });
-
-  updateProgress();
-}
-
-function checkAnswer(selectedOption) {
-  const questionData = questions[currentTopic][currentQuestionIndex];
-  if (selectedOption === questionData.answer) {
-    score++;
-  }
-
-  document.getElementById("next-btn").classList.remove("hidden");
-}
-
-function loadNextQuestion() {
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions[currentTopic].length) {
-    loadQuestion();
-    document.getElementById("next-btn").classList.add("hidden");
-  } else {
-    endQuiz();
-  }
-}
-
-function startTimer() {
-  timeLeft = 60;
-  timerInterval = setInterval(() => {
-    timeLeft--;
-    document.getElementById("timer").textContent = `Time left: ${timeLeft}s`;
-
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      endQuiz();
+    if (currentQuestionIndex >= questions.length) {
+        endQuiz();
+        return;
     }
-  }, 1000);
+    const question = questions[currentQuestionIndex];
+    questionElement.textContent = question.question;
+    roundInfo.textContent = `Round ${currentRound} of ${totalRounds}`;
+    startTimer();
 }
 
-function updateProgress() {
-  const progress = ((currentQuestionIndex + 1) / questions[currentTopic].length) * 100;
-  document.getElementById("progress").style.width = `${progress}%`;
+function checkAnswer() {
+    const userAnswer = answerElement.value.trim();
+    const correctAnswer = questions[currentQuestionIndex].answer;
+    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+        score++;
+        scoreElement.textContent = `Score: ${score}`;
+    }
+    moveToNextQuestion(true);
+}
+
+function moveToNextQuestion(userAnswered) {
+    clearInterval(interval);
+    if (userAnswered) currentQuestionIndex++;
+
+    if ((currentQuestionIndex % questionsPerRound === 0) && userAnswered) {
+        if (currentRound < totalRounds) {
+            currentRound++;
+            alert(`Round ${currentRound} starts now!`);
+        } else {
+            endQuiz();
+            return;
+        }
+    }
+    loadQuestion();
 }
 
 function endQuiz() {
-  clearInterval(timerInterval);
-  document.getElementById("quiz-container").classList.add("hidden");
-  const resultContainer = document.getElementById("result");
-  resultContainer.classList.remove("hidden");
-  resultContainer.textContent = `Quiz Over! Your Score: ${score} / ${questions[currentTopic].length}`;
+    questionElement.textContent = "Quiz Over!";
+    submitButton.disabled = true;
+    answerElement.disabled = true;
+    timerElement.textContent = "Time's up!";
+    timeBar.style.width = "0%";
 }
+
+submitButton.addEventListener("click", () => {
+    checkAnswer();
+    answerElement.value = "";
+});
+
+window.onload = () => {
+    loadQuestion();
+};
