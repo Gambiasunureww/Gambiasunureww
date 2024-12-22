@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timed Algebra Quiz</title>
+    <title>Algebra Quiz</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container" id="quiz-container">
-        <h1>Algebra Quiz</h1>
-        <div id="round-info"></div>
-        <div id="question-container">
-            <div id="question"></div>
-            <input type="text" id="answer" placeholder="Your answer">
+    <div class="quiz-container">
+        <div class="timer-bar"></div>
+        <div class="quiz-header">
+            <div class="round-info">Round <span id="currentRound">1</span></div>
+            <div class="score-panel">
+                <div class="round-score">Correct: <span id="roundScore">0</span>/5</div>
+                <div class="time-score">Points: <span id="timeScore">0</span></div>
+            </div>
+            <div class="timer-display">60</div>
         </div>
-        <div class="progress-bar">
-            <div id="time-bar" class="time-bar"></div>
+        <div class="progress-indicator">
+            <div class="progress-dot active"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
         </div>
-        <div id="timer"></div>
-        <button id="submit-answer">Submit Answer</button>
-        <div id="score">Score: 0</div>
-        <div id="start-quiz-container">
-            <button id="start-quiz" class="hidden">Start Round</button>
+        <div class="question-container">
+            <p class="question"></p>
+            <div class="options"></div>
         </div>
+        <div class="feedback"></div>
+        <div class="final-scores"></div>
+        <button class="start-quiz">Start Quiz</button>
+        <button class="next-round">Next Round</button>
     </div>
     <script src="script.js"></script>
 </body>
