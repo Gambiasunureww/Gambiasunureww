@@ -1,42 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Math Quiz</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra Quiz</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Math Quiz</h1>
-    <div class="quiz-settings">
-      <label for="topic">Select a Topic:</label>
-      <select id="topic">
-        <option value="algebra">Algebra</option>
-        <option value="geometry">Geometry</option>
-        <option value="arithmetic">Arithmetic</option>
-        <option value="trigonometry">Trigonometry</option>
-        <option value="calculus">Calculus</option>
-        <option value="statistics">Statistics</option>
-        <option value="probability">Probability</option>
-        <option value="linear-algebra">Linear Algebra</option>
-        <option value="discrete-math">Discrete Mathematics</option>
-        <option value="number-theory">Number Theory</option>
-        <option value="financial-math">Financial Mathematics</option>
-      </select>
-      <button id="start-btn">Start Quiz</button>
+    <div class="container">
+        <h1>Algebra Quiz</h1>
+        <div id="quiz-container">
+            <p id="round-info">Round 1 of 40</p>
+            <p id="timer">Time Left: 60s</p>
+            <div class="progress-bar">
+                <div class="time-bar" id="time-bar"></div>
+            </div>
+            <div id="question-container">
+                <p id="question"></p>
+            </div>
+            <input type="text" id="answer" placeholder="Your Answer">
+            <button id="submit-answer">Submit</button>
+            <p id="score">Score: 0</p>
+        </div>
     </div>
-    <div id="quiz-container" class="hidden">
-      <div id="timer">Time left: 60s</div>
-      <div class="progress-bar">
-        <div id="progress" style="width: 0%;"></div>
-      </div>
-      <div id="question"></div>
-      <div id="options"></div>
-      <button id="next-btn" class="hidden">Next</button>
-    </div>
-    <div id="result" class="hidden"></div>
-  </div>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
