@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algebra Quiz</title>
+    <title>Timed Algebra Quiz</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="quiz-container">
         <h1>Algebra Quiz</h1>
-        <div id="quiz-container">
-            <p id="round-info">Round 1 of 40</p>
-            <p id="timer">Time Left: 60s</p>
-            <div class="progress-bar">
-                <div class="time-bar" id="time-bar"></div>
-            </div>
-            <div id="question-container">
-                <p id="question"></p>
-            </div>
-            <input type="text" id="answer" placeholder="Your Answer">
-            <button id="submit-answer">Submit</button>
-            <p id="score">Score: 0</p>
+        <div id="round-info"></div>
+        <div id="question-container">
+            <div id="question"></div>
+            <input type="text" id="answer" placeholder="Your answer">
+        </div>
+        <div class="progress-bar">
+            <div id="time-bar" class="time-bar"></div>
+        </div>
+        <div id="timer"></div>
+        <button id="submit-answer">Submit Answer</button>
+        <div id="score">Score: 0</div>
+        <div id="start-quiz-container">
+            <button id="start-quiz" class="hidden">Start Round</button>
         </div>
     </div>
     <script src="script.js"></script>
