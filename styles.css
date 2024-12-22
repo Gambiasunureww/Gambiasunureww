@@ -1,83 +1,77 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    text-align: center;
+    padding: 20px;
 }
 
 .container {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
-  background: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+    width: 50%;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  margin-bottom: 20px;
+    color: #333;
 }
 
-.quiz-settings {
-  margin-bottom: 20px;
-}
-
-select {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-#timer {
-  font-size: 18px;
-  color: red;
-  margin-bottom: 10px;
+#round-info, #timer {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
 }
 
 .progress-bar {
-  width: 100%;
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  overflow: hidden;
+    width: 100%;
+    background-color: #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+    height: 10px;
 }
 
-#progress {
-  height: 10px;
-  background-color: #007bff;
+.time-bar {
+    height: 100%;
+    background-color: #3498db;
+    width: 100%;
+    transition: width 1s linear;
 }
 
-#options button {
-  display: block;
-  width: 80%;
-  margin: 10px auto;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+#question-container {
+    margin: 20px 0;
 }
 
-#options button:hover {
-  background-color: #0056b3;
+#question {
+    font-size: 1.5rem;
+    color: #2c3e50;
 }
 
-.hidden {
-  display: none;
+#answer {
+    padding: 10px;
+    font-size: 1rem;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+#score {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #27ae60;
 }
