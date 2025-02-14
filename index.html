@@ -3,36 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algebra Quiz</title>
+    <title>Ramadan Knowledge Quiz</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="quiz-container">
-        <div class="timer-bar"></div>
-        <div class="quiz-header">
-            <div class="round-info">Round <span id="currentRound">1</span></div>
-            <div class="score-panel">
-                <div class="round-score">Correct: <span id="roundScore">0</span>/5</div>
-                <div class="time-score">Points: <span id="timeScore">0</span></div>
-            </div>
-            <div class="timer-display">60</div>
-        </div>
-        <div class="progress-indicator">
-            <div class="progress-dot active"></div>
-            <div class="progress-dot"></div>
-            <div class="progress-dot"></div>
-            <div class="progress-dot"></div>
-            <div class="progress-dot"></div>
-        </div>
-        <div class="question-container">
-            <p class="question"></p>
-            <div class="options"></div>
-        </div>
-        <div class="feedback"></div>
-        <div class="final-scores"></div>
-        <button class="start-quiz">Start Quiz</button>
-        <button class="next-round">Next Round</button>
+    <div id="donation-popup" class="popup">
+        <span class="close-popup" onclick="closePopup('donation-popup')">×</span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Yl7tC0OLtn-JNMwiaE_wFCGKVo6v4aQX5g&s" alt="Hungry child placeholder">
+        <p><strong>DID YOU KNOW:</strong> Every minute, over 100 people break their fast without proper food.</p>
+        <p>Your donation can help provide iftar meals to those in need this Ramadan.</p>
+        <a href="https://knowyourdeen.github.io/knowyourdeendonations/" class="cta-button">CLICK HERE TO DONATE</a>
     </div>
+
+    <a id="popupAd" class="popup-ad" href="https://knowyourdeen.github.io/Knowyourdeen/" target="_blank">
+        <button class="close-button" onclick="closeAdPopup(event)">✕</button>
+        <div class="popup-content">
+            <h3>🌙 Ramadan Knowledge Hub</h3>
+            <p>Deepen your understanding of Ramadan and Islam.</p>
+            <div class="cta-button">
+                CLICK HERE TO JOIN
+            </div>
+            <p id="countdown" class="countdown">Closing in 5s</p>
+        </div>
+    </a>
+
+    <div class="container">
+        <div class="quiz-header">
+            <div class="crescent-moon">🌙</div>
+            <h1>Ramadan Knowledge Quiz</h1>
+            <p>Test your knowledge about the blessed month of Ramadan</p>
+        </div>
+        
+        <div id="start-screen">
+            <button class="btn" onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <div id="quiz-container" class="question-container">
+            <div class="timer">Time remaining: <span id="time">20</span>s</div>
+            <div class="progress">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <h2 id="question"></h2>
+            <div class="options" id="options"></div>
+        </div>
+
+        <div id="share-container" class="share-container">
+            <h2>Quiz Complete! 🎉</h2>
+            <p>Share with friends to reveal your score and win amazing prizes! 🎁</p>
+            <p>1. Share with 5 groups / 15 friends on WhatsApp</p>
+            <p>2. Your score will be revealed after sharing</p>
+
+            <a id="whatsapp-btn" href="#" class="whatsapp-button" target="_blank">
+                <button>Share on WhatsApp →</button>
+            </a>
+
+            <p class="progress-text">Share until the green bar is full!</p>
+
+            <div class="share-progress-container">
+                <div class="share-progress-bar" id="share-progress-bar"></div>
+                <span id="share-progress-percentage">0%</span>
+            </div>
+
+            <button id="continue-btn" class="continue-button" disabled>Reveal My Score</button>
+        </div>
+
+        <div id="final-result" class="final-result">
+            <div class="loading-animation" id="loading-animation">
+                Calculating your score... ⏳
+            </div>
+            <div id="score-display" style="display: none;">
+                <h2>Your Results! 🌟</h2>
+                <p>Your score: <span id="score">0</span>/10</p>
+                <p id="feedback"></p>
+                <button class="btn" onclick="restartQuiz()">Try Again</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
