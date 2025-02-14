@@ -188,3 +188,227 @@ body {
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
 }
+/* ... (previous CSS remains the same) ... */
+
+/* Popup ad specific styles */
+.popup-content {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.popup-ad h3 {
+    color: white;
+    font-size: 24px;
+    margin: 20px 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.popup-ad p {
+    color: white;
+    font-size: 18px;
+    margin: 15px 0;
+    line-height: 1.5;
+}
+
+.popup-ad .cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 20px 0;
+    font-size: 18px;
+    width: 80%;
+    max-width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.popup-ad .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.popup-ad .countdown {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ffc107;
+    font-size: 16px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    transition: transform 0.3s;
+}
+
+.close-button:hover {
+    transform: rotate(90deg);
+}
+
+/* Donation popup styles */
+.popup {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    z-index: 1000;
+    animation: slideIn 0.5s ease-out;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.popup img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.popup .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.popup .cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+.close-popup:hover {
+    transform: rotate(90deg);
+}
+
+/* Loading and result styles */
+.loading-animation {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+    animation: pulse 1.5s infinite;
+}
+
+#score-display {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Continue button styles */
+.continue-button {
+    background-color: #d9534f;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
+    width: 100%;
+    margin-top: 10px;
+    opacity: 0.5;
+    transition: all 0.3s;
+}
+
+.continue-button.enabled {
+    cursor: pointer;
+    opacity: 1;
+    background: linear-gradient(135deg, #d9534f, #dc3545);
+}
+
+.continue-button.enabled:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(217, 83, 79, 0.3);
+}
+
+/* Additional animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .popup {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .popup-content {
+        padding: 15px;
+    }
+
+    .option {
+        padding: 0.8rem;
+    }
+
+    .btn {
+        padding: 0.8rem 1.6rem;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .option {
+        border-width: 3px;
+    }
+
+    .progress-bar {
+        background: #000;
+    }
+
+    .btn {
+        border: 2px solid #000;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
