@@ -3,83 +3,1181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramadan Knowledge Quiz</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Spanish Language Quiz Speed Test</title>
+        <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #6889b8;
+            --accent-color: #ffd700;
+            --correct-color: #4caf50;
+            --incorrect-color: #f44336;
+            --timer-bg: #e0e0e0;
+            --white: #ffffff;
+            --dark: #333333;
+            --gray: #808080;
+            --light-gray: #f5f5f5;
+            --gradient-primary: linear-gradient(135deg, #4a6fa5, #6889b8);
+            --gradient-success: linear-gradient(135deg, #4caf50, #45a049);
+            --gradient-error: linear-gradient(135deg, #f44336, #e53935);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .topic-selection {
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            background-color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        select:hover, select:focus {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+            outline: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        .btn-start {
+            display: block;
+            width: 100%;
+            margin-top: 1rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .quiz-container {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .question-container {
+            margin-bottom: 1.5rem;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .timer-container {
+            margin-bottom: 1rem;
+        }
+
+        .timer-bar {
+            height: 12px;
+            width: 100%;
+            background-color: var(--timer-bg);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .timer-progress {
+            height: 100%;
+            width: 100%;
+            background: var(--gradient-primary);
+            transition: width 1s linear;
+            position: relative;
+        }
+
+        .timer-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .question {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .options {
+            list-style-type: none;
+        }
+
+        .option {
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .option:hover {
+            transform: translateX(5px);
+            background-color: #e8e8e8;
+            box-shadow: var(--shadow-md);
+        }
+
+        .option.correct {
+            background: var(--gradient-success);
+            color: var(--white);
+            border-color: #45a049;
+        }
+
+        .option.incorrect {
+            background: var(--gradient-error);
+            color: var(--white);
+            border-color: #e53935;
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .correct-feedback {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(69, 160, 73, 0.1));
+            color: var(--correct-color);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .incorrect-feedback {
+            background: linear-gradient(135deg, rgba(244, 67, 54, 0.2), rgba(229, 57, 53, 0.1));
+            color: var(--incorrect-color);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+        }
+
+        .question-counter {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .results {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .score {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .restart-btn {
+            margin-top: 1rem;
+        }
+
+        .blurred-option {
+            opacity: 0.6;
+            cursor: not-allowed;
+            filter: blur(1px);
+        }
+
+        .upgrade-message {
+            display: none;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.1));
+            border: 1px solid var(--accent-color);
+            border-radius: 10px;
+            font-weight: bold;
+            color: #ff8c00;
+            animation: pulse 2s infinite;
+        }
+
+        /* Popup ad styles */
+        .popup-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            text-align: center;
+            z-index: 9999;
+            text-decoration: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .popup-content {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup-ad h3 {
+            color: white;
+            font-size: 28px;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup-ad p {
+            color: white;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .question {
+                font-size: 1.2rem;
+            }
+
+            .option {
+                padding: 0.75rem;
+            }
+        }
+
+        /* Add styles for share functionality */
+        .share-container {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .share-progress {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .share-progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: #4CAF50;
+            transition: width 0.5s ease;
+        }
+
+        .telegram-share-btn {
+            background-color: #2eaade;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: background-color 0.3s;
+        }
+
+        .telegram-share-btn:hover {
+            background-color: #239ac4;
+        }
+
+        .telegram-share-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .share-instructions {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Add styles for answers summary */
+        .answers-section {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        #correct-answers {
+            background-color: #e8f5e9;
+        }
+
+        #wrong-answers {
+            background-color: #ffebee;
+        }
+
+        .answers-section h4 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .answers-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .answers-section li {
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 4px;
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
-    <div id="donation-popup" class="popup">
-        <span class="close-popup" onclick="closePopup('donation-popup')">×</span>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Yl7tC0OLtn-JNMwiaE_wFCGKVo6v4aQX5g&s" alt="Hungry child placeholder">
-        <p><strong>DID YOU KNOW:</strong> Every minute, over 100 people break their fast without proper food.</p>
-        <p>Your donation can help provide iftar meals to those in need this Ramadan.</p>
-        <a href="https://knowyourdeen.github.io/knowyourdeendonations/" class="cta-button">CLICK HERE TO DONATE</a>
+    <div class="container">
+        <header>
+            <h1>Spanish Language Quiz Speed Test</h1>
+            <p>Test your Spanish skills with a timed quiz!</p>
+        </header>
+
+        <div class="topic-selection" id="topicSelection">
+            <label for="topic">Select a Topic:</label>
+            <select id="topic">
+                <option value="">-- Select a topic --</option>
+                <option value="basic">Basic Spanish</option>
+                <option value="grammar">Grammar</option>
+                <option value="vocabulary">Vocabulary</option>
+                <option value="phrases" class="blurred-option">Common Phrases</option>
+                <option value="conversation" class="blurred-option">Conversation</option>
+                <option value="verbs" class="blurred-option">Verb Conjugation</option>
+                <option value="idioms" class="blurred-option">Spanish Idioms</option>
+                <option value="culture" class="blurred-option">Spanish Culture</option>
+            </select>
+            <button id="startBtn" class="btn btn-start">Start Quiz</button>
+            <div id="upgradeMessage" class="upgrade-message">UPGRADE TO PRO</div>
+        </div>
+
+        <div id="quizContainer" class="quiz-container">
+            <div class="question-counter" id="questionCounter">Question 1 of 10</div>
+            <div class="timer-container">
+                <div class="timer-bar">
+                    <div class="timer-progress" id="timerProgress"></div>
+                </div>
+            </div>
+            <div class="question-container">
+                <div class="question" id="question"></div>
+                <ul class="options" id="options"></ul>
+                <div class="feedback" id="feedback"></div>
+            </div>
+        </div>
+
+        <div id="results" class="results">
+            <h2>Quiz Completed!</h2>
+            <p>Your score:</p>
+            <div class="score" id="score">**</div>
+            
+            <div class="share-container">
+                <h3>Share and Unlock Full Score!</h3>
+                <p class="share-instructions">Share the quiz with friends to reveal your complete results!</p>
+                
+                <div class="share-progress">
+                    <div class="share-progress-bar" id="share-progress-bar"></div>
+                </div>
+                
+                <p id="share-count-text">Shares: 0/5</p>
+                
+                <button id="telegram-share-btn" class="telegram-share-btn">
+                    Share on Telegram
+                </button>
+                
+                <button id="reveal-score-btn" class="btn" disabled>
+                    Reveal Full Score
+                </button>
+            </div>
+            
+            <div id="answers-summary" style="display: none;">
+                <h3>Your Answers Summary</h3>
+                <div id="correct-answers" class="answers-section">
+                    <h4>Correct Answers: <span id="correct-count">0</span></h4>
+                    <ul id="correct-list"></ul>
+                </div>
+                <div id="wrong-answers" class="answers-section">
+                    <h4>Incorrect Answers: <span id="wrong-count">0</span></h4>
+                    <ul id="wrong-list"></ul>
+                </div>
+            </div>
+            
+            <p id="timeStats"></p>
+            <button id="restartBtn" class="btn restart-btn" style="display: none;">Take Another Quiz</button>
+        </div>
     </div>
 
-    <a id="popupAd" class="popup-ad" href="https://knowyourdeen.github.io/Knowyourdeen/" target="_blank">
-        <button class="close-button" onclick="closeAdPopup(event)">✕</button>
+    <!-- Add popup ad HTML -->
+    <a id="popupAd" class="popup-ad" href="https://t.me/+IZ8xoTUJhVJkM2I0" target="_blank">
+        <button class="close-button" onclick="closePopup(event)">✕</button>
         <div class="popup-content">
-            <h3>🌙 Ramadan Knowledge Hub</h3>
-            <p>Deepen your understanding of Ramadan and Islam.</p>
+            <h3>🚀 Upgrade to Spanish Quiz Pro!</h3>
+            <p><strong>Unlock More Features:</strong> Get access to all Spanish Quiz Topics, advanced analytics, and exclusive rewards!</p>
+            <p>Join the Pro Version now and take your Spanish learning to the next level! 🚀</p>    
             <div class="cta-button">
-                CLICK HERE TO JOIN
+                CLICK HERE TO UPGRADE
             </div>
-            <p id="countdown" class="countdown">Closing in 5s</p>
+            <p id="countdown" class="countdown">Click X at the top to close this Popup</p>
         </div>
     </a>
 
-    <div class="container">
-        <div class="quiz-header">
-            <div class="crescent-moon">🌙</div>
-            <h1>Ramadan Knowledge Quiz</h1>
-            <p>Test your knowledge about the blessed month of Ramadan</p>
-        </div>
-        
-        <div id="start-screen">
-            <button class="btn" onclick="startQuiz()">Start Quiz</button>
-        </div>
+    <script>
+        // DOM elements
+        const topicSelectionEl = document.getElementById('topicSelection');
+        const topicSelectEl = document.getElementById('topic');
+        const startBtn = document.getElementById('startBtn');
+        const upgradeMessageEl = document.getElementById('upgradeMessage');
+        const quizContainerEl = document.getElementById('quizContainer');
+        const questionCounterEl = document.getElementById('questionCounter');
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const feedbackEl = document.getElementById('feedback');
+        const timerProgressEl = document.getElementById('timerProgress');
+        const resultsEl = document.getElementById('results');
+        const scoreEl = document.getElementById('score');
+        const timeStatsEl = document.getElementById('timeStats');
+        const restartBtn = document.getElementById('restartBtn');
 
-        <div id="quiz-container" class="question-container">
-            <div class="timer">Time remaining: <span id="time">20</span>s</div>
-            <div class="progress">
-                <div class="progress-bar" id="progress-bar"></div>
-            </div>
-            <h2 id="question"></h2>
-            <div class="options" id="options"></div>
-        </div>
+        // Quiz state
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timer;
+        let timeLeft = 60;
+        let questions = [];
+        let startTime, endTime;
+        let answeredQuestions = 0;
+        let totalTimeUsed = 0;
+        let userAnswers = [];
+        let quizScore = 0;
+        let shareCount = 0;
 
-        <div id="share-container" class="share-container">
-            <h2>Quiz Complete! 🎉</h2>
-            <p>Share with friends to reveal your score and win amazing prizes! 🎁</p>
-            <p>1. Share with 5 groups / 15 friends on WhatsApp</p>
-            <p>2. Your score will be revealed after sharing</p>
+        // Additional DOM elements for new functionality
+        const telegramShareBtn = document.getElementById('telegram-share-btn');
+        const revealScoreBtn = document.getElementById('reveal-score-btn');
+        const shareProgressBar = document.getElementById('share-progress-bar');
+        const shareCountText = document.getElementById('share-count-text');
+        const answersSummary = document.getElementById('answers-summary');
 
-            <a id="whatsapp-btn" href="#" class="whatsapp-button" target="_blank">
-                <button>Share on WhatsApp →</button>
-            </a>
+       // Questions bank
+const questionsBank = {
+    basic: [
+        {
+            question: "What is 'Hello' in Spanish?",
+            options: ["Hola", "Buenos días", "Adiós", "Gracias"],
+            correctAnswer: 0
+        },
+        {
+            question: "How do you say 'Thank you' in Spanish?",
+            options: ["Por favor", "Gracias", "De nada", "Buenos días"],
+            correctAnswer: 1
+        },
+        {
+            question: "What is 'Good morning' in Spanish?",
+            options: ["Buenas noches", "Buenos días", "Buenas tardes", "Hola"],
+            correctAnswer: 1
+        },
+        {
+            question: "How do you say 'Goodbye' in Spanish?",
+            options: ["Hola", "Buenos días", "Adiós", "Gracias"],
+            correctAnswer: 2
+        },
+        {
+            question: "What is 'Please' in Spanish?",
+            options: ["Gracias", "De nada", "Por favor", "Buenos días"],
+            correctAnswer: 2
+        },
+        {
+            question: "How do you say 'Excuse me' in Spanish?",
+            options: ["Lo siento", "Disculpe", "Gracias", "Adiós"],
+            correctAnswer: 1
+        },
+        {
+            question: "What is 'Yes' in Spanish?",
+            options: ["No", "Sí", "Tal vez", "Nunca"],
+            correctAnswer: 1
+        },
+        {
+            question: "How do you say 'No' in Spanish?",
+            options: ["Sí", "No", "Nunca", "Siempre"],
+            correctAnswer: 1
+        },
+        {
+            question: "What is 'Good night' in Spanish?",
+            options: ["Buenas noches", "Buenos días", "Buenas tardes", "Hola"],
+            correctAnswer: 0
+        },
+        {
+            question: "How do you say 'How are you?' in Spanish?",
+            options: ["Qué pasa?", "Cómo estás?", "Hola", "Adiós"],
+            correctAnswer: 1
+        },
+        {
+            question: "What is 'I'm sorry' in Spanish?",
+            options: ["Por favor", "Lo siento", "Gracias", "De nada"],
+            correctAnswer: 1
+        },
+        {
+            question: "How do you say 'See you later' in Spanish?",
+            options: ["Hasta pronto", "Hasta luego", "Nos vemos", "Chao"],
+            correctAnswer: 1
+        }
+    ],
+    grammar: [
+        {
+            question: "Which is the correct article for 'libro' (book)?",
+            options: ["el", "la", "los", "las"],
+            correctAnswer: 0
+        },
+        {
+            question: "What is the plural of 'casa'?",
+            options: ["casas", "casaes", "casos", "casas"],
+            correctAnswer: 0
+        },
+        {
+            question: "Which is the correct form of 'to be' for 'yo'?",
+            options: ["es", "soy", "eres", "son"],
+            correctAnswer: 1
+        },
+        {
+            question: "What is the correct adjective agreement for 'chica'?",
+            options: ["alto", "alta", "altos", "altas"],
+            correctAnswer: 1
+        },
+        {
+            question: "Which is the correct form of 'to have' for 'tú'?",
+            options: ["tienes", "tiene", "tenemos", "tienen"],
+            correctAnswer: 0
+        },
+        {
+            question: "How do you say 'We are' in Spanish?",
+            options: ["Somos", "Soy", "Es", "Son"],
+            correctAnswer: 0
+        },
+        {
+            question: "Which is the correct form of 'to be' for 'él/ella'?",
+            options: ["eres", "es", "soy", "somos"],
+            correctAnswer: 1
+        },
+        {
+            question: "What is the plural of 'amigo'?",
+            options: ["amigas", "amigo", "amigos", "amigues"],
+            correctAnswer: 2
+        },
+        {
+            question: "Which is the correct conjugation of 'hablar' for 'nosotros'?",
+            options: ["hablo", "hablas", "hablamos", "hablan"],
+            correctAnswer: 2
+        },
+        {
+            question: "What is the correct form of 'estar' for 'yo'?",
+            options: ["estoy", "estás", "está", "estamos"],
+            correctAnswer: 0
+        },
+        {
+            question: "Which is the correct feminine form of 'trabajador'?",
+            options: ["trabajadora", "trabajadoras", "trabajadores", "trabajador"],
+            correctAnswer: 0
+        },
+        {
+            question: "How do you say 'They have' in Spanish?",
+            options: ["Tienen", "Tenemos", "Tiene", "Tenéis"],
+            correctAnswer: 0
+        }
+    ],
+    vocabulary: [
+        {
+            question: "What is 'house' in Spanish?",
+            options: ["casa", "carro", "libro", "mesa"],
+            correctAnswer: 0
+        },
+        {
+            question: "How do you say 'cat' in Spanish?",
+            options: ["perro", "gato", "pájaro", "pez"],
+            correctAnswer: 1
+        },
+        {
+            question: "What is 'book' in Spanish?",
+            options: ["mesa", "libro", "casa", "carro"],
+            correctAnswer: 1
+        },
+        {
+            question: "How do you say 'dog' in Spanish?",
+            options: ["gato", "perro", "pájaro", "pez"],
+            correctAnswer: 1
+        },
+        {
+            question: "What is 'table' in Spanish?",
+            options: ["casa", "mesa", "libro", "carro"],
+            correctAnswer: 1
+        },
+        {
+            question: "How do you say 'car' in Spanish?",
+            options: ["carro", "tren", "bici", "moto"],
+            correctAnswer: 0
+        },
+        {
+            question: "What is 'chair' in Spanish?",
+            options: ["silla", "mesa", "puerta", "ventana"],
+            correctAnswer: 0
+        },
+        {
+            question: "How do you say 'door' in Spanish?",
+            options: ["ventana", "puerta", "pared", "techo"],
+            correctAnswer: 1
+        },
+        {
+            question: "What is 'window' in Spanish?",
+            options: ["silla", "puerta", "ventana", "piso"],
+            correctAnswer: 2
+        },
+        {
+            question: "How do you say 'floor' in Spanish?",
+            options: ["techo", "pared", "piso", "silla"],
+            correctAnswer: 2
+        },
+        {
+            question: "What is 'pen' in Spanish?",
+            options: ["lápiz", "bolígrafo", "papel", "cuaderno"],
+            correctAnswer: 1
+        },
+        {
+            question: "How do you say 'paper' in Spanish?",
+            options: ["papel", "libro", "escritorio", "tijeras"],
+            correctAnswer: 0
+        }
+    ]
+};
 
-            <p class="progress-text">Share until the green bar is full!</p>
 
-            <div class="share-progress-container">
-                <div class="share-progress-bar" id="share-progress-bar"></div>
-                <span id="share-progress-percentage">0%</span>
-            </div>
+        // Initialize the quiz
+        function init() {
+            // Event listeners
+            startBtn.addEventListener('click', startQuiz);
+            restartBtn.addEventListener('click', restartQuiz);
+            topicSelectEl.addEventListener('change', handleTopicChange);
+            
+            // Disable blurred options
+            const blurredOptions = document.querySelectorAll('.blurred-option');
+            blurredOptions.forEach(option => {
+                option.disabled = true;
+                option.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    upgradeMessageEl.textContent = 'Upgrade to Pro to unlock';
+                    upgradeMessageEl.style.display = 'block';
+                    topicSelectEl.value = '';
+                });
+            });
+            
+            // Add event listeners for share functionality
+            if (telegramShareBtn && revealScoreBtn) {
+                telegramShareBtn.addEventListener('click', handleShare);
+                revealScoreBtn.addEventListener('click', revealFullScore);
+            }
+            
+            // Add popup event listeners
+            document.querySelector('.close-button').addEventListener('click', closePopup);
+            
+            // Show pop-up every 55 seconds
+            setInterval(showPopup, 55000);
+        }
 
-            <button id="continue-btn" class="continue-button" disabled>Reveal My Score</button>
-        </div>
+        // Handle topic change
+        function handleTopicChange() {
+            const selectedTopic = topicSelectEl.value;
+            const selectedOption = topicSelectEl.options[topicSelectEl.selectedIndex];
+            
+            // Reset upgrade message
+            upgradeMessageEl.style.display = 'none';
+            
+            // Check if selected option is blurred
+            if (selectedOption && selectedOption.classList.contains('blurred-option')) {
+                upgradeMessageEl.textContent = 'Upgrade to Pro to unlock';
+                upgradeMessageEl.style.display = 'block';
+                topicSelectEl.value = ''; // Reset selection
+            }
+        }
 
-        <div id="final-result" class="final-result">
-            <div class="loading-animation" id="loading-animation">
-                Calculating your score... ⏳
-            </div>
-            <div id="score-display" style="display: none;">
-                <h2>Your Results! 🌟</h2>
-                <p>Your score: <span id="score">0</span>/10</p>
-                <p id="feedback"></p>
-                <button class="btn" onclick="restartQuiz()">Try Again</button>
-            </div>
-        </div>
-    </div>
+        // Start the quiz
+        function startQuiz() {
+            const selectedTopic = topicSelectEl.value;
+            
+            if (!selectedTopic) {
+                alert('Please select a topic first!');
+                return;
+            }
+            
+            // Load questions for selected topic
+            questions = getRandomQuestions(selectedTopic, 10);
+            
+            if (questions.length === 0) {
+                alert('No questions available for this topic!');
+                return;
+            }
+            
+            // Hide topic selection and show quiz
+            topicSelectionEl.style.display = 'none';
+            quizContainerEl.style.display = 'block';
+            
+            // Reset quiz state
+            currentQuestionIndex = 0;
+            score = 0;
+            answeredQuestions = 0;
+            totalTimeUsed = 0;
+            startTime = new Date();
+            
+            // Load first question
+            loadQuestion();
+        }
 
-    <script src="script.js"></script>
+        // Get random questions from the bank
+        function getRandomQuestions(topic, count) {
+            if (!questionsBank[topic] || questionsBank[topic].length === 0) {
+                return [];
+            }
+            
+            const topicQuestions = [...questionsBank[topic]];
+            const selectedQuestions = [];
+            
+            // Ensure we don't try to get more questions than are available
+            count = Math.min(count, topicQuestions.length);
+            
+            for (let i = 0; i < count; i++) {
+                const randomIndex = Math.floor(Math.random() * topicQuestions.length);
+                selectedQuestions.push(topicQuestions.splice(randomIndex, 1)[0]);
+            }
+            
+            return selectedQuestions;
+        }
+
+        // Load a question
+        function loadQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                endQuiz();
+                return;
+            }
+            
+            const question = questions[currentQuestionIndex];
+            
+            // Update question counter
+            questionCounterEl.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+            
+            // Load question text
+            questionEl.textContent = question.question;
+            
+            // Clear options and feedback
+            optionsEl.innerHTML = '';
+            feedbackEl.innerHTML = '';
+            feedbackEl.className = 'feedback';
+            
+            // Add options
+            question.options.forEach((option, index) => {
+                const li = document.createElement('li');
+                li.textContent = option;
+                li.className = 'option';
+                li.setAttribute('data-index', index);
+                li.addEventListener('click', () => selectAnswer(index));
+                optionsEl.appendChild(li);
+            });
+            
+            // Reset and start timer
+            timeLeft = 60;
+            timerProgressEl.style.width = '100%';
+            clearInterval(timer);
+            startTimer();
+        }
+
+        // Start the timer
+        function startTimer() {
+            timer = setInterval(() => {
+                timeLeft--;
+                
+                // Update timer bar
+                const percentage = (timeLeft / 60) * 100;
+                timerProgressEl.style.width = `${percentage}%`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    handleTimeUp();
+                }
+            }, 1000);
+        }
+
+        // Handle time up
+        function handleTimeUp() {
+            // Mark question as timed out
+            feedbackEl.textContent = "Time's up! Moving to next question...";
+            feedbackEl.className = 'feedback incorrect-feedback';
+            
+            // Disable all options
+            const options = document.querySelectorAll('.option');
+            const question = questions[currentQuestionIndex];
+            const correctIndex = question.correctAnswer ?? question.answer;
+            
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+                
+                // Highlight correct answer
+                if (parseInt(option.getAttribute('data-index')) === correctIndex) {
+                    option.classList.add('correct');
+                }
+            });
+            
+            // Record time used
+            totalTimeUsed += 60;
+            answeredQuestions++;
+            
+            // Store answer with correct answer for timed out questions
+            userAnswers.push({
+                question: question.question,
+                userAnswer: "Time's up",
+                correctAnswer: question.options[correctIndex],
+                isCorrect: false
+            });
+            
+            // Move to next question after 2 seconds
+            setTimeout(nextQuestion, 2000);
+        }
+
+        function selectAnswer(index) {
+            clearInterval(timer);
+            
+            const correctIndex = questions[currentQuestionIndex].correctAnswer ?? questions[currentQuestionIndex].answer;
+            const isCorrect = index === correctIndex;
+            
+            // Record time used
+            const timeUsed = 60 - timeLeft;
+            totalTimeUsed += timeUsed;
+            answeredQuestions++;
+            
+            // Store answer with correct answer
+            const question = questions[currentQuestionIndex];
+            userAnswers.push({
+                question: question.question,
+                userAnswer: question.options[index],
+                correctAnswer: question.options[correctIndex],
+                isCorrect: isCorrect
+            });
+            
+            // Update score if correct
+            if (isCorrect) {
+                score++;
+            }
+            
+            // Disable options without highlighting
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+            });
+            
+            // Move to next question after 1 second
+            setTimeout(nextQuestion, 1000);
+        }
+
+        // Move to next question
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        // End the quiz
+        function endQuiz() {
+            endTime = new Date();
+            const totalTime = (endTime - startTime) / 1000; // in seconds
+            
+            // Hide quiz container and show results
+            quizContainerEl.style.display = 'none';
+            resultsEl.style.display = 'block';
+            
+            // Store actual score and show masked version
+            quizScore = score;
+            scoreEl.textContent = '**';
+            
+            // Reset share functionality
+            shareCount = 0;
+            shareProgressBar.style.width = '0%';
+            shareCountText.textContent = 'Shares: 0/5';
+            revealScoreBtn.disabled = true;
+            telegramShareBtn.disabled = false;
+            answersSummary.style.display = 'none';
+            restartBtn.style.display = 'none';
+            
+            // Update time stats
+            const avgTimePerQuestion = answeredQuestions > 0 ? (totalTimeUsed / answeredQuestions).toFixed(1) : 0;
+            timeStatsEl.textContent = `Total time: ${totalTime.toFixed(1)} seconds
+                                      Average time per question: ${avgTimePerQuestion} seconds`;
+        }
+
+        // Restart the quiz
+        function restartQuiz() {
+            // Hide results and show topic selection
+            resultsEl.style.display = 'none';
+            topicSelectionEl.style.display = 'block';
+            
+            // Reset topic selection
+            topicSelectEl.value = '';
+            upgradeMessageEl.style.display = 'none';
+        }
+
+        // Function to handle share action
+        function handleShare() {
+            shareCount++;
+            const progressPercentage = (shareCount / 5) * 100;
+            shareProgressBar.style.width = `${progressPercentage}%`;
+            shareCountText.textContent = `Shares: ${shareCount}/5`;
+
+            const telegramShareMessage = encodeURIComponent(
+                "🇪🇸✨ 99% of people can't get a perfect score on this Spanish quiz! " +
+                "Think you're in the top 1%? Test your Spanish knowledge now and challenge a friend to beat you! 🚀🔥\n\n" +
+                "CLICK THE LINK FOR THE QUIZ 👇 [https://yourquizlink.com]"
+            );
+            window.open(`https://t.me/share/url?url=${telegramShareMessage}`, '_blank');
+
+            if (shareCount >= 5) {
+                revealScoreBtn.disabled = false;
+                telegramShareBtn.disabled = true;
+            }
+        }
+
+        // Function to reveal full score
+        function revealFullScore() {
+            scoreEl.textContent = `${quizScore}/${questions.length}`;
+            
+            const correctList = document.getElementById('correct-list');
+            const wrongList = document.getElementById('wrong-list');
+            const correctCount = document.getElementById('correct-count');
+            const wrongCount = document.getElementById('wrong-count');
+            
+            correctList.innerHTML = '';
+            wrongList.innerHTML = '';
+            
+            let correctCountNum = 0;
+            let wrongCountNum = 0;
+            
+            userAnswers.forEach(answer => {
+                const li = document.createElement('li');
+                if (answer.isCorrect) {
+                    li.textContent = `Q: ${answer.question} | Your Answer: ${answer.userAnswer}`;
+                    correctList.appendChild(li);
+                    correctCountNum++;
+                } else {
+                    li.textContent = `Q: ${answer.question} | Your Answer: ${answer.userAnswer} | Correct Answer: ${answer.correctAnswer}`;
+                    wrongList.appendChild(li);
+                    wrongCountNum++;
+                }
+            });
+            
+            correctCount.textContent = correctCountNum;
+            wrongCount.textContent = wrongCountNum;
+            
+            answersSummary.style.display = 'block';
+            restartBtn.style.display = 'inline-block';
+            
+            alert(`¡Felicitaciones! Your full score is ${quizScore}/${questions.length}. Great job completing the Spanish quiz!`);
+            revealScoreBtn.disabled = true;
+        }
+
+        // Add popup functionality
+        function showPopup() {
+            let popup = document.getElementById("popupAd");
+            let countdown = document.getElementById("countdown");
+            let timeLeft = 35;
+            popup.style.display = "flex";
+            
+            let timer = setInterval(() => {
+                timeLeft--;
+                countdown.innerText = `Closing in ${timeLeft}s`;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    popup.style.display = "none";
+                }
+            }, 1000);
+        }
+
+        function closePopup(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            document.getElementById("popupAd").style.display = "none";
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
 </body>
 </html>
